@@ -19,19 +19,17 @@ jobs:
           node-version: 18
 
       - name: Install backend dependencies
-        working-directory: backend
+        working-directory: BackendCID  
         run: npm install
 
       - name: Lint backend
-        working-directory: backend
+        working-directory: BackendCID  
         run: npm run lint || echo "No linter configured"
 
       - name: Run backend tests
-        working-directory: backend
+        working-directory: BackendCID  
         run: npm test || echo "No tests configured"
 
-      - name: Deploy backend to Render
-        run: curl -X POST ${{ secrets.RENDER_BACKEND_HOOK }}
 
   frontend:
     runs-on: ubuntu-latest
@@ -47,11 +45,11 @@ jobs:
           node-version: 18
 
       - name: Install frontend dependencies
-        working-directory: frontend
+        working-directory: FrontendCICD  
         run: npm install
 
       - name: Build frontend
-        working-directory: frontend
+        working-directory: FrontendCICD  
         run: npm run build
 
       - name: Deploy frontend to Render
